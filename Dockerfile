@@ -1,15 +1,8 @@
 FROM richarvey/nginx-php-fpm:3.1.6
 
 # Install dependencies
-RUN apk update && \
-    apk add --no-cache \
-        libzip-dev \
-        $PHPIZE_DEPS && \
-    pecl install redis && \
-    docker-php-ext-enable redis && \
-    apk add --no-cache nodejs npm && \
-    apk del $PHPIZE_DEPS && \
-    rm -rf /tmp/pear
+RUN apk update && \ 
+    apk add --no-cache nodejs npm
 
 COPY . .
 
