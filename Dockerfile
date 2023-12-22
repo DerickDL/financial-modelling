@@ -1,7 +1,9 @@
 FROM richarvey/nginx-php-fpm:3.1.6
 
-# Install Node.js and npm
-RUN apk update && \
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y libzip-dev && \
+    docker-php-ext-install zip && \
     pecl install redis && \
     docker-php-ext-enable redis && \
     apk add --no-cache nodejs npm
