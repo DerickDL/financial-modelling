@@ -53,13 +53,13 @@ class FinancialDataApiRepository implements FinancialDataRepositoryInterface
      */
     private function getCachedData(string $sCacheKey, string $sUrl, array $params): array
     {
-         return Cache::remember($sCacheKey, now()->addMinutes(30), function () use ($params, $sUrl) {
+         // return Cache::remember($sCacheKey, now()->addMinutes(30), function () use ($params, $sUrl) {
             try {
                 return $this->apiGet($sUrl, $params);
             } catch (\Exception $e) {
                 \Log::error('API request failed', ['exception' => $e->getMessage()]);
                 return ['error' => 'API request failed'];
             }
-        });
+        // });
     }
 }
