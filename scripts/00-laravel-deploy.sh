@@ -4,6 +4,7 @@ composer global require hirak/prestissimo
 composer install --no-dev --working-dir=/var/www/html
 
 echo "NPM Build"
+npm install
 npm run build
 
 echo "generating application key..."
