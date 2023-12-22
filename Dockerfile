@@ -2,6 +2,8 @@ FROM richarvey/nginx-php-fpm:3.1.6
 
 # Install Node.js and npm
 RUN apk update && \
+    pecl install redis && \
+    docker-php-ext-enable redis && \
     apk add --no-cache nodejs npm
 
 COPY . .
